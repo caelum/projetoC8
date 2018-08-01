@@ -1,4 +1,6 @@
-class MensagemView extends View<string>{
+import {View} from './View.js'
+
+export class MensagemView extends View<string>{
 
     template(model: string): any {
         return `<p class="alert alert-info">${model}</p>`

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "start": "tsc -w"
+    "watch": "tsc -w",
+    "server": "http-server -c-1 app",
+    "start": "concurrently 'npm run watch' 'npm run server'"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,8 @@
   "homepage": "https://github.com/caelum/projetoC8#readme",
   "devDependencies": {
     "@types/jquery": "^2.0.42",
+    "concurrently": "^3.6.1",
+    "http-server": "^0.11.1",
     "typescript": "^2.3.3"
   }
 }
