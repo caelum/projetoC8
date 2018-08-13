@@ -24,11 +24,29 @@ export class NegociacaoController {
             parseFloat(this._inputValor.val())
         )
 
-        this._negociacoes.adiciona(negociacao)
+        if(!this._ehDiaUtil(negociacao.data)){
+            this._mensagemView.update('Não é possível adicionar negociações em fins de semana')
+        } else {
+            this._negociacoes.adiciona(negociacao)
+    
+            this._negociacoesView.update(this._negociacoes)
+    
+            this._mensagemView.update('Negociação adicionada com sucesso')
+        }
 
-        this._negociacoesView.update(this._negociacoes)
-
-        this._mensagemView.update('Negociação adicionada com sucesso')
     }
 
+    private _ehDiaUtil(data:  Date){
+        return data.getDay() !== DiaDaSemana.Domingo && data.getDay() !== DiaDaSemana.Sabado
+    }
+}
+
+enum DiaDaSemana {
+    Domingo = 0,
+    Segunda = 1,
+    Terca = 2,
+    Quarta = 3,
+    Quinta = 4,
+    Sexta = 5,
+    Sabado = 6,
 }
