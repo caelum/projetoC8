@@ -1,11 +1,9 @@
 export abstract class View<T>{
 
     protected _elemento: JQuery
-    private _safe: boolean
     
-    constructor(seletor: string, safe: boolean = true){
+    constructor(seletor: string, private _safe: boolean = true){
         this._elemento = $(seletor)
-        this._safe = safe
     }
     update(model: T): void{
         const template = this._safe
