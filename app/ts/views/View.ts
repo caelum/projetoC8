@@ -1,3 +1,5 @@
+import {logTempoExecucao} from  '../helpers/decorators/logTempoExecucao.js'
+
 export abstract class View<T>{
 
     protected _elemento: JQuery
@@ -6,18 +8,13 @@ export abstract class View<T>{
         this._elemento = $(seletor)
     }
 
+    @logTempoExecucao()
     update(model: T): void{
-        const tempoInicial = performance.now()
-
         const template = this._safe
             ? this.template(model).replace(/<script>[\s\S]*?<\/script>/g, '')
             : this.template(model)
 
         this._elemento.html(template)
-
-        const tempoFinal = performance.now()
-
-        console.log(`Tempo de execução de update: ${tempoFinal - tempoInicial} ms`)
     }
 
     abstract template(model: T): string
