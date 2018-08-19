@@ -1,7 +1,5 @@
-import {Negociacao} from '../models/Negociacao.js'
-import {Negociacoes} from '../models/Negociacoes.js'
-import {NegociacoesView} from '../views/NegociacoesView.js'
-import {MensagemView} from '../views/MensagemView.js'
+import {Negociacao, Negociacoes} from '../models/index.js'
+import {NegociacoesView, MensagemView} from '../views/index.js'
 
 export class NegociacaoController {
     private _inputData: JQuery
